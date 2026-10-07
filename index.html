@@ -303,7 +303,6 @@
     // تحويل النص إلى رقم مع دعم الفاصلة والنقطة
     function parseNum(val) {
         if (!val) return 0;
-        // إزالة الفراغات والفواصل
         val = val.toString().replace(/\s/g, '').replace(/,/g, '.');
         const num = parseFloat(val);
         return isNaN(num) ? 0 : num;
