@@ -16,8 +16,9 @@
             overflow: hidden;
         }
         body {
-            background: linear-gradient(160deg, #0f2027, #203a43, #2c5364);
-            color: #fff;
+            /* الخلفية الزرقاء */
+            background: linear-gradient(160deg, #1565c0, #0d47a1, #1976d2);
+            color: #000;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -28,67 +29,65 @@
             max-width: 500px;
             height: 100%;
             max-height: 100vh;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
+            background: #0d47a1;
             border-radius: 18px;
             padding: 10px 10px 8px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 2px solid #fff;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
             overflow: hidden;
         }
 
+        /* الترويسة */
         .header {
             text-align: center;
             padding-bottom: 6px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 2px solid #fff;
             margin-bottom: 6px;
             flex-shrink: 0;
         }
         .header h1 {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 900;
-            background: linear-gradient(135deg, #ffd700, #ffed4e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #fff;
             letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         .header h2 {
-            font-size: 15px;
-            color: #90caf9;
+            font-size: 16px;
+            color: #fff;
             margin-top: 2px;
-            font-weight: 700;
+            font-weight: 900;
         }
 
+        /* صندوق النتيجة */
         .result-box {
-            background: linear-gradient(135deg, #1a3a5c, #0d2b45);
+            background: #fff;
             border-radius: 12px;
             padding: 8px 10px;
             margin-bottom: 6px;
-            border: 1.5px solid #ffd700;
+            border: 2px solid #ffd700;
             text-align: center;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
             flex-shrink: 0;
         }
         .result-box .label {
-            font-size: 11px;
-            color: #ffd700;
+            font-size: 12px;
+            color: #0d47a1;
             margin-bottom: 2px;
-            font-weight: 600;
+            font-weight: 900;
         }
         .result-box .value {
-            font-size: 28px;
+            font-size: 30px;
             font-weight: 900;
-            color: #fff;
-            text-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+            color: #000;
             letter-spacing: 0.5px;
         }
         .result-box .value.negative {
-            color: #ff6b6b;
-            text-shadow: 0 0 12px rgba(255, 107, 107, 0.4);
+            color: #c62828;
         }
 
+        /* الشبكة الرئيسية */
         .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -97,30 +96,32 @@
             overflow-y: auto;
             padding: 2px;
         }
-        .grid::-webkit-scrollbar { width: 3px; }
-        .grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
+        .grid::-webkit-scrollbar { width: 4px; }
+        .grid::-webkit-scrollbar-thumb { background: #fff; border-radius: 10px; }
 
+        /* الخانات البيضاء */
         .section {
-            background: rgba(255, 255, 255, 0.05);
+            background: #ffffff;
             border-radius: 10px;
             padding: 7px 8px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 2px solid #0d47a1;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
         }
         .section.full {
             grid-column: span 2;
         }
         .section-title {
-            font-size: 13px;
-            font-weight: 800;
-            color: #ffd700;
-            margin-bottom: 4px;
+            font-size: 14px;
+            font-weight: 900;
+            color: #000;
+            margin-bottom: 5px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.2px;
         }
         .input-row {
             display: flex;
@@ -132,21 +133,21 @@
         }
         .input-group label {
             display: block;
-            font-size: 10px;
-            color: #cfd8e3;
+            font-size: 11px;
+            color: #000;
             margin-bottom: 2px;
-            font-weight: 600;
+            font-weight: 900;
             white-space: nowrap;
         }
         .input-group input {
             width: 100%;
             padding: 7px 6px;
             border-radius: 7px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background: rgba(255, 255, 255, 0.15);
-            color: #fff;
-            font-size: 14px;
-            font-weight: 800;
+            border: 2px solid #0d47a1;
+            background: #ffffff;
+            color: #000000;
+            font-size: 15px;
+            font-weight: 900;
             outline: none;
             transition: 0.2s;
             text-align: center;
@@ -154,44 +155,45 @@
         }
         .input-group input:focus {
             border-color: #ffd700;
-            background: rgba(255, 215, 0, 0.2);
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+            background: #fffde7;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
         }
         .input-group input::placeholder {
-            color: rgba(255, 255, 255, 0.35);
-            font-weight: 500;
+            color: #888;
+            font-weight: 700;
         }
-        .input-group input.positive { border-right: 3px solid #4ade80; }
-        .input-group input.negative { border-right: 3px solid #f87171; }
+        .input-group input.positive { border-right: 5px solid #2e7d32; }
+        .input-group input.negative { border-right: 5px solid #c62828; }
 
+        /* التذييل */
         .footer {
             text-align: center;
             margin-top: 6px;
-            font-size: 13px;
-            color: #ffd700;
-            font-weight: 800;
+            font-size: 14px;
+            color: #fff;
+            font-weight: 900;
             letter-spacing: 1px;
             flex-shrink: 0;
             padding-top: 5px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 2px solid #fff;
         }
 
         @media (max-width: 360px) {
-            .header h1 { font-size: 18px; }
-            .header h2 { font-size: 12px; }
-            .result-box .value { font-size: 22px; }
-            .input-group input { font-size: 12px; padding: 5px 4px; }
-            .section-title { font-size: 11px; }
+            .header h1 { font-size: 20px; }
+            .header h2 { font-size: 13px; }
+            .result-box .value { font-size: 24px; }
+            .input-group input { font-size: 13px; padding: 5px 4px; }
+            .section-title { font-size: 12px; }
         }
         @media (max-height: 700px) {
-            .header h1 { font-size: 18px; }
-            .header h2 { font-size: 12px; }
+            .header h1 { font-size: 20px; }
+            .header h2 { font-size: 13px; }
             .result-box { padding: 5px 8px; }
-            .result-box .value { font-size: 22px; }
+            .result-box .value { font-size: 24px; }
             .section { padding: 5px 6px; }
-            .input-group input { padding: 5px 5px; font-size: 12px; }
-            .section-title { font-size: 11px; }
-            .footer { font-size: 11px; }
+            .input-group input { padding: 5px 5px; font-size: 13px; }
+            .section-title { font-size: 12px; }
+            .footer { font-size: 12px; }
         }
     </style>
 </head>
@@ -344,7 +346,6 @@
 </div>
 
 <script>
-    // تحويل النص إلى رقم
     function parseNum(val) {
         if (!val) return 0;
         let cleaned = val.toString().replace(/,/g, '');
@@ -352,7 +353,6 @@
         return isNaN(num) ? 0 : num;
     }
 
-    // تنسيق الرقم بفواصل الآلاف
     function formatNum(num) {
         if (isNaN(num)) return '0.00';
         const fixed = num.toFixed(2);
@@ -384,46 +384,36 @@
         }
     }
 
-    // تنسيق فوري مع الحفاظ على موضع المؤشر
     function formatInput(e) {
         const input = e.target;
         const oldValue = input.value;
         const cursorPos = input.selectionStart;
         
-        // احتفظ فقط بالأرقام والنقطة (الفاصلة العشرية)
         let raw = oldValue.replace(/,/g, '');
-        // اسمح فقط بأرقام ونقطة واحدة
         const parts = raw.split('.');
         let intPart = parts[0].replace(/\D/g, '');
         let decPart = parts.length > 1 ? parts.slice(1).join('').replace(/\D/g, '').substring(0, 2) : '';
         
-        // إذا كان الحقل فارغاً
         if (intPart === '' && decPart === '' && parts.length === 1) {
             input.value = '';
             calculate();
             return;
         }
         
-        // بناء الرقم
         let numStr = intPart || '0';
         let num;
         if (parts.length > 1) {
-            // يوجد فاصلة عشرية
             num = parseFloat(numStr + '.' + (decPart || '0'));
             if (isNaN(num)) num = 0;
-            // التنسيق مع الحفاظ على الجزء العشري
             const formattedInt = (intPart || '0').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
             input.value = formattedInt + '.' + decPart;
         } else {
-            // لا يوجد فاصلة عشرية
             num = parseFloat(numStr);
             if (isNaN(num)) num = 0;
-            // التنسيق بدون جزء عشري (المستخدم لم يكتبه بعد)
             const formattedInt = numStr.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
             input.value = formattedInt;
         }
         
-        // حاول الحفاظ على موضع المؤشر قدر الإمكان
         const newPos = Math.max(1, input.value.length - (oldValue.length - cursorPos));
         try {
             input.setSelectionRange(newPos, newPos);
@@ -432,12 +422,10 @@
         calculate();
     }
 
-    // ربط جميع الحقول
     document.querySelectorAll('input').forEach(input => {
         input.addEventListener('input', formatInput);
     });
 
-    // حساب أولي
     calculate();
 </script>
 </body>
