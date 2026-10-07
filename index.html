@@ -364,11 +364,12 @@
 </div>
 
 <script>
-    // تحويل النص إلى رقم
+    // تحويل النص إلى رقم (نتعامل مع الأرقام فقط)
     function parseNum(val) {
         if (!val) return 0;
-        val = val.toString().replace(/\s/g, '').replace(/,/g, '');
-        const num = parseFloat(val);
+        // أزل كل الفواصل
+        let cleaned = val.toString().replace(/,/g, '');
+        const num = parseFloat(cleaned);
         return isNaN(num) ? 0 : num;
     }
 
@@ -413,32 +414,38 @@
         }
     }
 
-    // تنسيق فوري أثناء الكتابة (يمنع خطأ 1 → 100)
+    // تنسيق فوري أثناء الكتابة — الإصلاح الجديد
     function formatInput(e) {
         let val = e.target.value;
-        // أزل كل الفواصل والفواصل العشرية
-        let raw = val.replace(/,/g, '').replace(/\./g, '');
-        // أزل أي شيء غير رقمي
-        raw = raw.replace(/\D/g, '');
         
-        if (raw === '') {
+        // احتفظ فقط بالأرقام والنقطة
+        let cleaned = val.replace(/,/g, '').replace(/[^\d.]/g, '');
+        
+        // إذا كان فارغاً
+        if (cleaned === '' || cleaned === '.') {
             e.target.value = '';
             calculate();
             return;
         }
-
-        // أدخل الفاصلة العشرية قبل آخر خانتين فقط إذا كان المستخدم كتب فاصلة
-        let num = parseFloat(raw) / 100;
         
-        // إذا كان المستخدم أدخل فاصلة عشرية يدوياً
-        if (val.includes('.') || val.includes(',')) {
-            const normalized = val.replace(',', '.');
-            const parts = normalized.split('.');
-            const intPart = parts[0].replace(/\D/g, '') || '0';
-            const decPart = parts.slice(1).join('').replace(/\D/g, '').substring(0, 2);
+        // تحقق من وجود نقطة عشرية
+        let num;
+        if (cleaned.includes('.')) {
+            const parts = cleaned.split('.');
+            const intPart = parts[0] || '0';
+            const decPart = parts.slice(1).join('').substring(0, 2);
             num = parseFloat(intPart + '.' + (decPart || '0'));
+        } else {
+            // لا توجد نقطة عشرية — العدد كما هو
+            num = parseFloat(cleaned);
         }
-
+        
+        if (isNaN(num)) {
+            e.target.value = '';
+            calculate();
+            return;
+        }
+        
         e.target.value = formatNum(num);
         calculate();
     }
