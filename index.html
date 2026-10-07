@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محاسبة 1103 - بريد الجزائر</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: linear-gradient(145deg, #0a1f3d, #123a6b);
+            min-height: 100vh;
+            padding: 15px;
+            color: #fff;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 25px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+        }
+        .logo {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
+        }
+        .header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+        .header h2 {
+            font-size: 20px;
+            color: #a0c4ff;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+        .result-box {
+            background: linear-gradient(135deg, #0f2a4f, #1a3d6e);
+            border-radius: 18px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 2px solid #ffd700;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+        }
+        .result-box .label {
+            font-size: 16px;
+            color: #ffd700;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .result-box .value {
+            font-size: 42px;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+        .result-box .value.negative {
+            color: #ff6b6b;
+            text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            padding: 15px;
+            margin-bottom: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .section-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #a0c4ff;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .input-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .input-group {
+            flex: 1;
+            min-width: 120px;
+        }
+        .input-group label {
+            display: block;
+            font-size: 12px;
+            color: #c0d4f0;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.06);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            outline: none;
+            transition: 0.3s;
+            text-align: center;
+        }
+        .input-group input:focus {
+            border-color: #ffd700;
+            background: rgba(255, 215, 0, 0.1);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+        }
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.25);
+            font-weight: 400;
+        }
+        .input-group input.positive {
+            border-left: 4px solid #4ade80;
+        }
+        .input-group input.negative {
+            border-left: 4px solid #f87171;
+        }
+        .btn-execute {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 16px;
+            font-size: 20px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.3s;
+            color: #0a1f3d;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            box-shadow: 0 6px 25px rgba(255, 215, 0, 0.4);
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+        .btn-execute:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 35px rgba(255, 215, 0, 0.6);
+        }
+        .btn-execute:active {
+            transform: scale(0.98);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+        @media (max-width: 480px) {
+            .header h1 { font-size: 24px; }
+            .header h2 { font-size: 16px; }
+            .result-box .value { font-size: 32px; }
+            .input-group { min-width: 100px; }
+            .logo { width: 80px; height: 80px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- الترويسة -->
+    <div class="header">
+        <!-- شعار بريد الجزائر (SVG مرسوم) -->
+        <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="45" fill="#ffd700" stroke="#0a1f3d" stroke-width="3"/>
+            <rect x="28" y="35" width="44" height="30" fill="#0a1f3d" stroke="#ffd700" stroke-width="2" rx="4"/>
+            <path d="M30 40 L50 58 L70 40" stroke="#ffd700" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="50" y="80" text-anchor="middle" font-size="11" font-weight="bold" fill="#0a1f3d">ALGÉRIE POSTE</text>
+        </svg>
+        <h1>بريد الجزائر</h1>
+        <h2>محاسبة 1103</h2>
+    </div>
+
+    <!-- صندوق النتيجة -->
+    <div class="result-box">
+        <div class="label">📊 النتيجة الإجمالية</div>
+        <div class="value" id="resultValue">0.00</div>
+    </div>
+
+    <!-- المتغير الأول -->
+    <div class="section">
+        <div class="section-title">1️⃣ طلب / دفع الأموال</div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>طلب (إضافة +)</label>
+                <input type="number" id="var1_add" class="positive" placeholder="0.00" step="0.01">
+            </div>
+            <div class="input-group">
+                <label>دفع (طرح −)</label>
+                <input type="number" id="var1_sub" class="negative" placeholder="0.00" step="0.01">
+            </div>
+        </div>
+    </div>
+
+    <!-- المتغير الثاني -->
+    <div class="section">
+        <div class="section-title">2️⃣ عمليات السحب بالصك</div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>المبلغ (طرح −)</label>
+                <input type="number" id="var2" class="negative" placeholder="0.00" step="0.01">
+            </div>
+        </div>
+    </div>
+
+    <!-- المتغير الثالث -->
+    <div class="section">
+        <div class="section-title">3️⃣ عمليات السحب بالبطاقة</div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>المبلغ (طرح −)</label>
+                <input type="number" id="var3" class="negative" placeholder="0.00" step="0.01">
+            </div>
+        </div>
+    </div>
+
+    <!-- المتغير الرابع -->
+    <div class="section">
+        <div class="section-title">4️⃣ عمليات الدفع CCP</div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>المبلغ (طرح −)</label>
+                <input type="number" id="var4" class="negative" placeholder="0.00" step="0.01">
+            </div>
+        </div>
+    </div>
+
+    <!-- المتغير الخامس -->
+    <div class="section">
+        <div class="section-title">5️⃣ رسوم A23</div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>المبلغ (طرح −)</label>
+                <input type="number" id="var5" class="negative" placeholder="0.00" step="0.01">
+            </div>
+        </div>
+    </div>
+
+    <!-- المتغير السادس -->
+    <div class="section">
+        <div class="section-title">6️⃣ عمليات دفع وتخليص الحوالات الإلكترونية</div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>دفع (طرح −)</label>
+                <input type="number" id="var6_sub" class="negative" placeholder="0.00" step="0.01">
+            </div>
+            <div class="input-group">
+                <label>تخليص (إضافة +)</label>
+                <input type="number" id="var6_add" class="positive" placeholder="0.00" step="0.01">
+            </div>
+        </div>
+    </div>
+
+    <!-- المتغير السابع -->
+    <div class="section">
+        <div class="section-title">7️⃣ رسوم A21</div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>المبلغ (طرح −)</label>
+                <input type="number" id="var7" class="negative" placeholder="0.00" step="0.01">
+            </div>
+        </div>
+    </div>
+
+    <!-- المتغير الثامن -->
+    <div class="section">
+        <div class="section-title">8️⃣ عمليات CNEP</div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>التخلص (إضافة +)</label>
+                <input type="number" id="var8_add" class="positive" placeholder="0.00" step="0.01">
+            </div>
+            <div class="input-group">
+                <label>الدفع (طرح −)</label>
+                <input type="number" id="var8_sub" class="negative" placeholder="0.00" step="0.01">
+            </div>
+        </div>
+    </div>
+
+    <!-- المتغير التاسع -->
+    <div class="section">
+        <div class="section-title">9️⃣ تخليص فاتورة الكهرباء</div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>المبلغ (طرح −)</label>
+                <input type="number" id="var9" class="negative" placeholder="0.00" step="0.01">
+            </div>
+        </div>
+    </div>
+
+    <!-- المتغير العاشر -->
+    <div class="section">
+        <div class="section-title">🔟 تخليص الحوالات الامتحانات</div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>المبلغ (طرح −)</label>
+                <input type="number" id="var10" class="negative" placeholder="0.00" step="0.01">
+            </div>
+        </div>
+    </div>
+
+    <!-- المتغير الحادي عشر -->
+    <div class="section">
+        <div class="section-title">1️⃣1️⃣ عمليات تخليص متنوعة</div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>المبلغ (طرح −)</label>
+                <input type="number" id="var11" class="negative" placeholder="0.00" step="0.01">
+            </div>
+        </div>
+    </div>
+
+    <!-- المتغير الثاني عشر -->
+    <div class="section">
+        <div class="section-title">1️⃣2️⃣ أخطاء الصندوق</div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>فائض في الصندوق (إضافة +)</label>
+                <input type="number" id="var12_add" class="positive" placeholder="0.00" step="0.01">
+            </div>
+            <div class="input-group">
+                <label>نقص في الصندوق (طرح −)</label>
+                <input type="number" id="var12_sub" class="negative" placeholder="0.00" step="0.01">
+            </div>
+        </div>
+    </div>
+
+    <!-- زر التنفيذ -->
+    <button class="btn-execute" onclick="calculate()">⚡ تنفيذ العملية</button>
+
+    <div class="footer">محاسبة 1103 - بريد الجزائر © 2026</div>
+</div>
+
+<script>
+    function calculate() {
+        const var1_add  = parseFloat(document.getElementById('var1_add').value)  || 0;
+        const var1_sub  = parseFloat(document.getElementById('var1_sub').value)  || 0;
+        const var2      = parseFloat(document.getElementById('var2').value)      || 0;
+        const var3      = parseFloat(document.getElementById('var3').value)      || 0;
+        const var4      = parseFloat(document.getElementById('var4').value)      || 0;
+        const var5      = parseFloat(document.getElementById('var5').value)      || 0;
+        const var6_sub  = parseFloat(document.getElementById('var6_sub').value)  || 0;
+        const var6_add  = parseFloat(document.getElementById('var6_add').value)  || 0;
+        const var7      = parseFloat(document.getElementById('var7').value)      || 0;
+        const var8_add  = parseFloat(document.getElementById('var8_add').value)  || 0;
+        const var8_sub  = parseFloat(document.getElementById('var8_sub').value)  || 0;
+        const var9      = parseFloat(document.getElementById('var9').value)      || 0;
+        const var10     = parseFloat(document.getElementById('var10').value)     || 0;
+        const var11     = parseFloat(document.getElementById('var11').value)     || 0;
+        const var12_add = parseFloat(document.getElementById('var12_add').value) || 0;
+        const var12_sub = parseFloat(document.getElementById('var12_sub').value) || 0;
+
+        const totalAdd = var1_add + var6_add + var8_add + var12_add;
+        const totalSub = var1_sub + var2 + var3 + var4 + var5 + var6_sub + var7 + var8_sub + var9 + var10 + var11 + var12_sub;
+
+        const result = totalAdd - totalSub;
+
+        const resultEl = document.getElementById('resultValue');
+        resultEl.textContent = result.toFixed(2);
+
+        if (result < 0) {
+            resultEl.classList.add('negative');
+        } else {
+            resultEl.classList.remove('negative');
+        }
+    }
+</script>
+</body>
+</html>
