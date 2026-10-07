@@ -39,7 +39,6 @@
             overflow: hidden;
         }
 
-        /* الترويسة */
         .header {
             text-align: center;
             padding-bottom: 6px;
@@ -62,7 +61,6 @@
             font-weight: 700;
         }
 
-        /* صندوق النتيجة */
         .result-box {
             background: linear-gradient(135deg, #1a3a5c, #0d2b45);
             border-radius: 12px;
@@ -91,7 +89,6 @@
             text-shadow: 0 0 12px rgba(255, 107, 107, 0.4);
         }
 
-        /* الشبكة الرئيسية */
         .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -167,7 +164,6 @@
         .input-group input.positive { border-right: 3px solid #4ade80; }
         .input-group input.negative { border-right: 3px solid #f87171; }
 
-        /* التذييل */
         .footer {
             text-align: center;
             margin-top: 6px;
@@ -202,22 +198,18 @@
 <body>
 <div class="container">
 
-    <!-- الترويسة -->
     <div class="header">
         <h1>بريد الجزائر</h1>
         <h2>محاسبة 1103</h2>
     </div>
 
-    <!-- النتيجة -->
     <div class="result-box">
         <div class="label">📊 النتيجة الإجمالية</div>
         <div class="value" id="resultValue">0.00</div>
     </div>
 
-    <!-- شبكة الخانات -->
     <div class="grid">
 
-        <!-- 1 -->
         <div class="section full">
             <div class="section-title">1️⃣ طلب / دفع الأموال</div>
             <div class="input-row">
@@ -232,7 +224,6 @@
             </div>
         </div>
 
-        <!-- 2 -->
         <div class="section">
             <div class="section-title">2️⃣ السحب بالصك</div>
             <div class="input-row">
@@ -242,7 +233,6 @@
             </div>
         </div>
 
-        <!-- 3 -->
         <div class="section">
             <div class="section-title">3️⃣ السحب بالبطاقة</div>
             <div class="input-row">
@@ -252,7 +242,6 @@
             </div>
         </div>
 
-        <!-- 4 -->
         <div class="section">
             <div class="section-title">4️⃣ دفع CCP</div>
             <div class="input-row">
@@ -262,7 +251,6 @@
             </div>
         </div>
 
-        <!-- 5 -->
         <div class="section">
             <div class="section-title">5️⃣ رسوم A23</div>
             <div class="input-row">
@@ -272,7 +260,6 @@
             </div>
         </div>
 
-        <!-- 6 -->
         <div class="section full">
             <div class="section-title">6️⃣ دفع / تخليص الحوالات الإلكترونية</div>
             <div class="input-row">
@@ -287,7 +274,6 @@
             </div>
         </div>
 
-        <!-- 7 -->
         <div class="section">
             <div class="section-title">7️⃣ رسوم A21</div>
             <div class="input-row">
@@ -297,7 +283,6 @@
             </div>
         </div>
 
-        <!-- 8 -->
         <div class="section full">
             <div class="section-title">8️⃣ عمليات CNEP</div>
             <div class="input-row">
@@ -312,7 +297,6 @@
             </div>
         </div>
 
-        <!-- 9 -->
         <div class="section">
             <div class="section-title">9️⃣ دفع الكهرباء</div>
             <div class="input-row">
@@ -322,7 +306,6 @@
             </div>
         </div>
 
-        <!-- 10 -->
         <div class="section">
             <div class="section-title">🔟 دفع حوالات التعليم</div>
             <div class="input-row">
@@ -332,7 +315,6 @@
             </div>
         </div>
 
-        <!-- 11 -->
         <div class="section">
             <div class="section-title">1️⃣1️⃣ دفع متنوعة</div>
             <div class="input-row">
@@ -342,7 +324,6 @@
             </div>
         </div>
 
-        <!-- 12 -->
         <div class="section full">
             <div class="section-title">1️⃣2️⃣ أخطاء الصندوق</div>
             <div class="input-row">
@@ -359,15 +340,13 @@
 
     </div>
 
-    <!-- التذييل -->
     <div class="footer">محاسبة 1103 - العميد 2026</div>
 </div>
 
 <script>
-    // تحويل النص إلى رقم (نتعامل مع الأرقام فقط)
+    // تحويل النص إلى رقم
     function parseNum(val) {
         if (!val) return 0;
-        // أزل كل الفواصل
         let cleaned = val.toString().replace(/,/g, '');
         const num = parseFloat(cleaned);
         return isNaN(num) ? 0 : num;
@@ -375,6 +354,7 @@
 
     // تنسيق الرقم بفواصل الآلاف
     function formatNum(num) {
+        if (isNaN(num)) return '0.00';
         const fixed = num.toFixed(2);
         const [intPart, decPart] = fixed.split('.');
         const intFormatted = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -382,25 +362,15 @@
     }
 
     function calculate() {
-        const var1_add  = parseNum(document.getElementById('var1_add').value);
-        const var1_sub  = parseNum(document.getElementById('var1_sub').value);
-        const var2      = parseNum(document.getElementById('var2').value);
-        const var3      = parseNum(document.getElementById('var3').value);
-        const var4_add  = parseNum(document.getElementById('var4_add').value);
-        const var5_add  = parseNum(document.getElementById('var5_add').value);
-        const var6_sub  = parseNum(document.getElementById('var6_sub').value);
-        const var6_add  = parseNum(document.getElementById('var6_add').value);
-        const var7_add  = parseNum(document.getElementById('var7_add').value);
-        const var8_sub  = parseNum(document.getElementById('var8_sub').value);
-        const var8_add  = parseNum(document.getElementById('var8_add').value);
-        const var9_add  = parseNum(document.getElementById('var9_add').value);
-        const var10_add = parseNum(document.getElementById('var10_add').value);
-        const var11_add = parseNum(document.getElementById('var11_add').value);
-        const var12_add = parseNum(document.getElementById('var12_add').value);
-        const var12_sub = parseNum(document.getElementById('var12_sub').value);
+        const ids = ['var1_add','var1_sub','var2','var3','var4_add','var5_add','var6_sub','var6_add','var7_add','var8_sub','var8_add','var9_add','var10_add','var11_add','var12_add','var12_sub'];
+        const vals = {};
+        ids.forEach(id => {
+            const el = document.getElementById(id);
+            vals[id] = el ? parseNum(el.value) : 0;
+        });
 
-        const totalAdd = var1_add + var4_add + var5_add + var6_add + var7_add + var8_add + var9_add + var10_add + var11_add + var12_add;
-        const totalSub = var1_sub + var2 + var3 + var6_sub + var8_sub + var12_sub;
+        const totalAdd = vals.var1_add + vals.var4_add + vals.var5_add + vals.var6_add + vals.var7_add + vals.var8_add + vals.var9_add + vals.var10_add + vals.var11_add + vals.var12_add;
+        const totalSub = vals.var1_sub + vals.var2 + vals.var3 + vals.var6_sub + vals.var8_sub + vals.var12_sub;
 
         const result = totalAdd - totalSub;
 
@@ -414,39 +384,51 @@
         }
     }
 
-    // تنسيق فوري أثناء الكتابة — الإصلاح الجديد
+    // تنسيق فوري مع الحفاظ على موضع المؤشر
     function formatInput(e) {
-        let val = e.target.value;
+        const input = e.target;
+        const oldValue = input.value;
+        const cursorPos = input.selectionStart;
         
-        // احتفظ فقط بالأرقام والنقطة
-        let cleaned = val.replace(/,/g, '').replace(/[^\d.]/g, '');
+        // احتفظ فقط بالأرقام والنقطة (الفاصلة العشرية)
+        let raw = oldValue.replace(/,/g, '');
+        // اسمح فقط بأرقام ونقطة واحدة
+        const parts = raw.split('.');
+        let intPart = parts[0].replace(/\D/g, '');
+        let decPart = parts.length > 1 ? parts.slice(1).join('').replace(/\D/g, '').substring(0, 2) : '';
         
-        // إذا كان فارغاً
-        if (cleaned === '' || cleaned === '.') {
-            e.target.value = '';
+        // إذا كان الحقل فارغاً
+        if (intPart === '' && decPart === '' && parts.length === 1) {
+            input.value = '';
             calculate();
             return;
         }
         
-        // تحقق من وجود نقطة عشرية
+        // بناء الرقم
+        let numStr = intPart || '0';
         let num;
-        if (cleaned.includes('.')) {
-            const parts = cleaned.split('.');
-            const intPart = parts[0] || '0';
-            const decPart = parts.slice(1).join('').substring(0, 2);
-            num = parseFloat(intPart + '.' + (decPart || '0'));
+        if (parts.length > 1) {
+            // يوجد فاصلة عشرية
+            num = parseFloat(numStr + '.' + (decPart || '0'));
+            if (isNaN(num)) num = 0;
+            // التنسيق مع الحفاظ على الجزء العشري
+            const formattedInt = (intPart || '0').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            input.value = formattedInt + '.' + decPart;
         } else {
-            // لا توجد نقطة عشرية — العدد كما هو
-            num = parseFloat(cleaned);
+            // لا يوجد فاصلة عشرية
+            num = parseFloat(numStr);
+            if (isNaN(num)) num = 0;
+            // التنسيق بدون جزء عشري (المستخدم لم يكتبه بعد)
+            const formattedInt = numStr.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            input.value = formattedInt;
         }
         
-        if (isNaN(num)) {
-            e.target.value = '';
-            calculate();
-            return;
-        }
+        // حاول الحفاظ على موضع المؤشر قدر الإمكان
+        const newPos = Math.max(1, input.value.length - (oldValue.length - cursorPos));
+        try {
+            input.setSelectionRange(newPos, newPos);
+        } catch(err) {}
         
-        e.target.value = formatNum(num);
         calculate();
     }
 
