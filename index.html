@@ -21,11 +21,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 6px;
+            padding: 5px;
         }
         .container {
             width: 100%;
-            max-width: 480px;
+            max-width: 500px;
             height: 100%;
             max-height: 100vh;
             background: rgba(255, 255, 255, 0.05);
@@ -43,23 +43,23 @@
         .header {
             text-align: center;
             padding-bottom: 6px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 6px;
             flex-shrink: 0;
         }
         .header h1 {
-            font-size: 20px;
-            font-weight: 800;
+            font-size: 22px;
+            font-weight: 900;
             background: linear-gradient(135deg, #ffd700, #ffed4e);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: 1px;
         }
         .header h2 {
-            font-size: 14px;
+            font-size: 15px;
             color: #90caf9;
             margin-top: 2px;
-            font-weight: 500;
+            font-weight: 700;
         }
 
         /* صندوق النتيجة */
@@ -80,7 +80,7 @@
             font-weight: 600;
         }
         .result-box .value {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 900;
             color: #fff;
             text-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
@@ -91,24 +91,23 @@
             text-shadow: 0 0 12px rgba(255, 107, 107, 0.4);
         }
 
-        /* الشبكة الرئيسية للخانات */
+        /* الشبكة الرئيسية */
         .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 5px;
             flex: 1;
             overflow-y: auto;
-            padding-left: 2px;
-            padding-right: 2px;
+            padding: 2px;
         }
         .grid::-webkit-scrollbar { width: 3px; }
         .grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
 
         .section {
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
-            padding: 6px 7px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 7px 8px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -117,13 +116,14 @@
             grid-column: span 2;
         }
         .section-title {
-            font-size: 10px;
-            font-weight: 700;
-            color: #90caf9;
+            font-size: 13px;
+            font-weight: 800;
+            color: #ffd700;
             margin-bottom: 4px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            letter-spacing: 0.3px;
         }
         .input-row {
             display: flex;
@@ -135,21 +135,21 @@
         }
         .input-group label {
             display: block;
-            font-size: 9px;
-            color: #b0c4de;
-            margin-bottom: 1px;
-            font-weight: 500;
+            font-size: 10px;
+            color: #cfd8e3;
+            margin-bottom: 2px;
+            font-weight: 600;
             white-space: nowrap;
         }
         .input-group input {
             width: 100%;
-            padding: 6px 6px;
+            padding: 7px 6px;
             border-radius: 7px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.15);
             color: #fff;
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 14px;
+            font-weight: 800;
             outline: none;
             transition: 0.2s;
             text-align: center;
@@ -157,12 +157,12 @@
         }
         .input-group input:focus {
             border-color: #ffd700;
-            background: rgba(255, 215, 0, 0.08);
-            box-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
+            background: rgba(255, 215, 0, 0.2);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
         }
         .input-group input::placeholder {
-            color: rgba(255, 255, 255, 0.2);
-            font-weight: 400;
+            color: rgba(255, 255, 255, 0.35);
+            font-weight: 500;
         }
         .input-group input.positive { border-right: 3px solid #4ade80; }
         .input-group input.negative { border-right: 3px solid #f87171; }
@@ -171,31 +171,30 @@
         .footer {
             text-align: center;
             margin-top: 6px;
-            font-size: 12px;
-            color: rgba(255, 215, 0, 0.8);
-            font-weight: 700;
-            letter-spacing: 1.5px;
+            font-size: 13px;
+            color: #ffd700;
+            font-weight: 800;
+            letter-spacing: 1px;
             flex-shrink: 0;
-            padding-top: 4px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 5px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* شاشات صغيرة جداً */
         @media (max-width: 360px) {
-            .header h1 { font-size: 17px; }
+            .header h1 { font-size: 18px; }
             .header h2 { font-size: 12px; }
             .result-box .value { font-size: 22px; }
-            .input-group input { font-size: 11px; padding: 5px 4px; }
-            .section-title { font-size: 9px; }
-            .input-group label { font-size: 8px; }
+            .input-group input { font-size: 12px; padding: 5px 4px; }
+            .section-title { font-size: 11px; }
         }
         @media (max-height: 700px) {
-            .header h1 { font-size: 16px; }
-            .header h2 { font-size: 11px; }
+            .header h1 { font-size: 18px; }
+            .header h2 { font-size: 12px; }
             .result-box { padding: 5px 8px; }
             .result-box .value { font-size: 22px; }
-            .section { padding: 4px 6px; }
+            .section { padding: 5px 6px; }
             .input-group input { padding: 5px 5px; font-size: 12px; }
+            .section-title { font-size: 11px; }
             .footer { font-size: 11px; }
         }
     </style>
@@ -212,13 +211,13 @@
     <!-- النتيجة -->
     <div class="result-box">
         <div class="label">📊 النتيجة الإجمالية</div>
-        <div class="value" id="resultValue">0,00</div>
+        <div class="value" id="resultValue">0.00</div>
     </div>
 
     <!-- شبكة الخانات -->
     <div class="grid">
 
-        <!-- 1 - طلب / دفع الأموال -->
+        <!-- 1 -->
         <div class="section full">
             <div class="section-title">1️⃣ طلب / دفع الأموال</div>
             <div class="input-row">
@@ -233,7 +232,7 @@
             </div>
         </div>
 
-        <!-- 2 - السحب بالصك -->
+        <!-- 2 -->
         <div class="section">
             <div class="section-title">2️⃣ السحب بالصك</div>
             <div class="input-row">
@@ -243,7 +242,7 @@
             </div>
         </div>
 
-        <!-- 3 - السحب بالبطاقة -->
+        <!-- 3 -->
         <div class="section">
             <div class="section-title">3️⃣ السحب بالبطاقة</div>
             <div class="input-row">
@@ -253,7 +252,7 @@
             </div>
         </div>
 
-        <!-- 4 - الدفع CCP -->
+        <!-- 4 -->
         <div class="section">
             <div class="section-title">4️⃣ دفع CCP</div>
             <div class="input-row">
@@ -263,7 +262,7 @@
             </div>
         </div>
 
-        <!-- 5 - رسوم A23 -->
+        <!-- 5 -->
         <div class="section">
             <div class="section-title">5️⃣ رسوم A23</div>
             <div class="input-row">
@@ -273,7 +272,7 @@
             </div>
         </div>
 
-        <!-- 6 - الحوالات الإلكترونية -->
+        <!-- 6 -->
         <div class="section full">
             <div class="section-title">6️⃣ دفع / تخليص الحوالات الإلكترونية</div>
             <div class="input-row">
@@ -288,7 +287,7 @@
             </div>
         </div>
 
-        <!-- 7 - رسوم A21 -->
+        <!-- 7 -->
         <div class="section">
             <div class="section-title">7️⃣ رسوم A21</div>
             <div class="input-row">
@@ -298,7 +297,7 @@
             </div>
         </div>
 
-        <!-- 8 - CNEP -->
+        <!-- 8 -->
         <div class="section full">
             <div class="section-title">8️⃣ عمليات CNEP</div>
             <div class="input-row">
@@ -313,7 +312,7 @@
             </div>
         </div>
 
-        <!-- 9 - الكهرباء -->
+        <!-- 9 -->
         <div class="section">
             <div class="section-title">9️⃣ دفع الكهرباء</div>
             <div class="input-row">
@@ -323,7 +322,7 @@
             </div>
         </div>
 
-        <!-- 10 - حوالات التعليم -->
+        <!-- 10 -->
         <div class="section">
             <div class="section-title">🔟 دفع حوالات التعليم</div>
             <div class="input-row">
@@ -333,7 +332,7 @@
             </div>
         </div>
 
-        <!-- 11 - دفع متنوعة -->
+        <!-- 11 -->
         <div class="section">
             <div class="section-title">1️⃣1️⃣ دفع متنوعة</div>
             <div class="input-row">
@@ -343,7 +342,7 @@
             </div>
         </div>
 
-        <!-- 12 - أخطاء الصندوق -->
+        <!-- 12 -->
         <div class="section full">
             <div class="section-title">1️⃣2️⃣ أخطاء الصندوق</div>
             <div class="input-row">
@@ -361,19 +360,14 @@
     </div>
 
     <!-- التذييل -->
-    <div class="footer">العميد 2026</div>
+    <div class="footer">محاسبة 1103 - العميد 2026</div>
 </div>
 
 <script>
-    // تحويل النص إلى رقم مع دعم الفاصلة والنقطة
+    // تحويل النص إلى رقم
     function parseNum(val) {
         if (!val) return 0;
-        val = val.toString().replace(/\s/g, '').replace(/\./g, '').replace(',', '.');
-        // إذا كان هناك أكثر من فاصلة، خذ الجزء الصحيح
-        if (val.indexOf('.') !== val.lastIndexOf('.')) {
-            const parts = val.split('.');
-            val = parts[0] + '.' + parts.slice(1).join('');
-        }
+        val = val.toString().replace(/\s/g, '').replace(/,/g, '');
         const num = parseFloat(val);
         return isNaN(num) ? 0 : num;
     }
@@ -404,9 +398,7 @@
         const var12_add = parseNum(document.getElementById('var12_add').value);
         const var12_sub = parseNum(document.getElementById('var12_sub').value);
 
-        // الإضافات
         const totalAdd = var1_add + var4_add + var5_add + var6_add + var7_add + var8_add + var9_add + var10_add + var11_add + var12_add;
-        // الطروحات
         const totalSub = var1_sub + var2 + var3 + var6_sub + var8_sub + var12_sub;
 
         const result = totalAdd - totalSub;
@@ -421,35 +413,33 @@
         }
     }
 
-    // تنسيق فوري أثناء الكتابة + حساب
+    // تنسيق فوري أثناء الكتابة (يمنع خطأ 1 → 100)
     function formatInput(e) {
-        let val = e.target.value.replace(/\s/g, '');
+        let val = e.target.value;
         // أزل كل الفواصل والفواصل العشرية
-        const raw = val.replace(/,/g, '').replace(/\./g, '');
+        let raw = val.replace(/,/g, '').replace(/\./g, '');
+        // أزل أي شيء غير رقمي
+        raw = raw.replace(/\D/g, '');
+        
         if (raw === '') {
             e.target.value = '';
             calculate();
             return;
         }
-        // إذا كان يحتوي على فاصلة عشرية أدخلها
-        let formatted;
+
+        // أدخل الفاصلة العشرية قبل آخر خانتين فقط إذا كان المستخدم كتب فاصلة
+        let num = parseFloat(raw) / 100;
+        
+        // إذا كان المستخدم أدخل فاصلة عشرية يدوياً
         if (val.includes('.') || val.includes(',')) {
-            // خذ آخر فاصلة كنقطة عشرية
             const normalized = val.replace(',', '.');
             const parts = normalized.split('.');
-            const intPart = parts[0].replace(/\D/g, '');
+            const intPart = parts[0].replace(/\D/g, '') || '0';
             const decPart = parts.slice(1).join('').replace(/\D/g, '').substring(0, 2);
-            if (decPart.length > 0) {
-                formatted = formatNum(parseFloat((intPart || '0') + '.' + decPart));
-            } else {
-                formatted = formatNum(parseFloat(intPart || '0'));
-            }
-        } else {
-            formatted = formatNum(parseFloat(raw || '0'));
+            num = parseFloat(intPart + '.' + (decPart || '0'));
         }
-        // لا تضع التنسيق إذا كان الحقل فارغاً
-        if (raw === '') formatted = '';
-        e.target.value = formatted;
+
+        e.target.value = formatNum(num);
         calculate();
     }
 
